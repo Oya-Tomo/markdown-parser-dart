@@ -157,7 +157,7 @@ class MarkdownParser {
   }
 
   ParsedLine? _isListItemLine(String line) {
-    final reg = RegExp("( *- +)(.*)");
+    final reg = RegExp("( *-)( +.*)");
     final res = reg.firstMatch(line);
     if (res == null) {
       return null;
@@ -166,7 +166,9 @@ class MarkdownParser {
         type: LineType.list,
         text: line,
         blocks: [
-          ParsedBlock(type: BlockType.symbol, text: res.group(1)!),
+          ParsedBlock(
+              type: BlockType.symbol,
+              text: res.group(1)!.replaceFirst("-", "･")),
           ..._parseText(res.group(2)!),
         ],
       );
@@ -176,7 +178,7 @@ class MarkdownParser {
   }
 
   ParsedLine? _isQuoteLine(String line) {
-    final reg = RegExp("( *> +)(.*)");
+    final reg = RegExp("( *>)( +.*)");
     final res = reg.firstMatch(line);
     if (res == null) {
       return null;
@@ -196,7 +198,7 @@ class MarkdownParser {
   }
 
   ParsedLine? _isInfoLine(String line) {
-    final reg = RegExp("( *:::info +)(.*)");
+    final reg = RegExp("( *:::info)( +.*)");
     final res = reg.firstMatch(line);
     if (res == null) {
       return null;
