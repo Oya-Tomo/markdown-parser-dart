@@ -15,5 +15,5 @@ You can make such a textfield with the markdown object tree that was generated b
 
 ## more message
 
-By referencing this project, please make more wonderful syntax parser.
+Reference this project and please make more wonderful syntax parser.
 The code in this project was made to be simple.
